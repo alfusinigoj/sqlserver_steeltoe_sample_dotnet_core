@@ -25,6 +25,10 @@ namespace SqlServer.Steeltoe.Sample.Core
                 {
                     config.SetBasePath(builderContext.HostingEnvironment.ContentRootPath)
                         .AddJsonFile($"appsettings.json", optional: false, reloadOnChange: false)
+
+                        //Just added this file for demonstrating VCAP_SERVICES (CUPS) from developer station
+                        .AddJsonFile($"vcap.services.json", optional: false, reloadOnChange: false)
+
                         .AddEnvironmentVariables()
                         .AddCloudFoundry();
                 })

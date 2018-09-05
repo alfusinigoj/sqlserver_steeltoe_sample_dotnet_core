@@ -1,0 +1,19 @@
+{
+  "vcap:services": {
+    "user-provided": [
+      {
+        "credentials": {
+          "username": "sa",
+          "password": "Pa55w0rd",
+          "hostname": "localhost",
+          "port": "1433",
+          "name": "testdb"
+        },
+        "name": "sql-server-config-user-provided-service",
+        "tags": [
+          "sqlserver"
+        ]
+      }
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,7 +11,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Steeltoe.CloudFoundry.Connector;
+using Steeltoe.CloudFoundry.Connector.App;
+using Steeltoe.CloudFoundry.Connector.Services;
 using Steeltoe.CloudFoundry.Connector.SqlServer;
+using Steeltoe.Extensions.Configuration.CloudFoundry;
 
 namespace SqlServer.Steeltoe.Sample.Core
 {
@@ -26,10 +31,14 @@ namespace SqlServer.Steeltoe.Sample.Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging();
-            services.AddSqlServerConnection(Configuration);
+
+            if(Configuration.HasCloudFoundryServiceConfigurations())
+                services.AddSqlServerConnection(Configuration, Configuration["SqlServerConfigCupsServiceName"]);//Using VCAP_SERVICES (CUPS)
+            else
+                services.AddSqlServerConnection(Configuration);//Using Application Settings or Environment Variables
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
-
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
