@@ -1,6 +1,6 @@
-### Sample .net core web api application demonstrating the use of sqlserver connection using steeltoe.
+## Sample .net core web api application demonstrating the use of sqlserver connection using steeltoe.
 
-## Points to follow, in general to use steeltoe connector to connect sqlserver, configuration using VCAP (CUPS)
+### Points to follow, in general to use steeltoe connector to connect sqlserver, configuration using VCAP (CUPS)
 - Add below packages, latest versions preferred
 ```
     <PackageReference Include="Steeltoe.Extensions.Configuration.CloudFoundryCore" Version="2.0.1"/>
@@ -25,7 +25,7 @@
 - Start the application using the below command
 ```cf restart <app_name>```
 
-## To run this application, follow the below steps
+### To run this application, follow the below steps
 
 - Comment out the below line in Program.cs, as it is used only for demonstrating VCAP service usage from a developer machine (without PCF)
 ```.AddJsonFile($"vcap.services.json", optional: false, reloadOnChange: false)```
