@@ -1,5 +1,4 @@
-# dotnet_core_web_api_sample
- Sample .net core web api application demonstrating the use of sqlserver connection using steeltoe.
+### Sample .net core web api application demonstrating the use of sqlserver connection using steeltoe.
 
 ## Points to follow, in general to use steeltoe connector to connect sqlserver, configuration using VCAP (CUPS)
 - Add below packages, latest versions preferred
