@@ -3,16 +3,13 @@
     "user-provided": [
       {
         "credentials": {
-          "username": "sa",
-          "password": "Pa55w0rd",
-          "hostname": "localhost",
-          "port": "1433",
-          "name": "testdb"
+          "username": "{sql_username}",
+          "password": "{sql_passeord}",
+          "uri":"sqlserver://{serverhostname}:{port}",
+          "name": "{database_name}"
         },
         "name": "sql-server-config-user-provided-service",
-        "tags": [
-          "sqlserver"
-        ]
+        "tags": []
       }
     ]
   }

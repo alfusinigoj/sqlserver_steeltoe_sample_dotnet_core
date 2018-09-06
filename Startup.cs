@@ -32,10 +32,7 @@ namespace SqlServer.Steeltoe.Sample.Core
         {
             services.AddLogging();
 
-            if(Configuration.HasCloudFoundryServiceConfigurations())
-                services.AddSqlServerConnection(Configuration, Configuration["SqlServerConfigCupsServiceName"]);//Using VCAP_SERVICES (CUPS)
-            else
-                services.AddSqlServerConnection(Configuration);//Using Application Settings or Environment Variables
+            services.AddSqlServerConnection(Configuration);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
